@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Welcome') {
+            steps {
+                echo 'Welcome to the CI/CD Pipeline!'
+                echo "Running Build ID: ${BUILD_ID}"
+            }
+        }
+
+        stage('Code Quality') {
+            steps {
+                echo 'Running Code Quality Analysis...'
+                // Example tool execution:
+                // sh 'mvn sonar:sonar' or sh 'npm run lint'
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Pipeline execution finished.'
+        }
+    }
+}
